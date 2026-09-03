@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-windows:
@@ -13,8 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - name: Build Core and Windows App
-        run: cargo build --release -p droplink-windows -p droplink-installer
+      - name: Build Windows App and Installer
+        shell: powershell
+        run: |
+          cargo build --release -p droplink-windows
+          New-Item -ItemType Directory -Force -Path "dist"
+          Copy-Item "target/release/droplink-windows.exe" -Destination "dist/DropLink-Portable.exe" -Force
+          cargo build --release -p droplink-installer
 
   build-android:
     name: Build Android Application
@@ -27,11 +33,12 @@ jobs:
           java-version: '17'
       - uses: android-actions/setup-android@v3
       - uses: gradle/actions/setup-gradle@v4
-      - name: Build Android APK
+      - name: Generate Wrapper and Build Android APK
         run: |
           cd android
+          gradle wrapper --gradle-version 8.9
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace
+          ./gradlew assembleRelease --stacktrace --no-daemon
 
   build-ios:
     name: Build iOS Application
