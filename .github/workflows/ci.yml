@@ -17,10 +17,10 @@ jobs:
       - name: Build Windows App and Installer
         shell: powershell
         run: |
-          cargo build --release -p droplink-windows
+          cargo build --release --target-dir target -p droplink-windows
           New-Item -ItemType Directory -Force -Path "dist"
           Copy-Item "target/release/droplink-windows.exe" -Destination "dist/DropLink-Portable.exe" -Force
-          cargo build --release -p droplink-installer
+          cargo build --release --target-dir target -p droplink-installer
 
   build-android:
     name: Build Android Application

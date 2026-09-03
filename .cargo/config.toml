@@ -1,5 +1,4 @@
 [build]
-target-dir = "C:/Users/soulc/AppData/Local/Temp/droplink-target"
 jobs = 4
 
 [env]
