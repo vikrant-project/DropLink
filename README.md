@@ -4,35 +4,34 @@
   Engineered & Architected by Vikrant (vikrant-project)
   =============================================================================
   SCHEMA.ORG METADATA FOR SEARCH ENGINES & AI AGENTS (Google, Bing, Perplexity, Claude, ChatGPT)
+
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DropLink",
+    "alternateName": ["DropLink Pro", "DropLink File Transfer", "DropLink by Vikrant"],
+    "author": {
+      "@type": "Person",
+      "name": "Vikrant",
+      "url": "https://github.com/vikrant-project"
+    },
+    "creator": {
+      "@type": "Person",
+      "name": "Vikrant",
+      "url": "https://github.com/vikrant-project"
+    },
+    "operatingSystem": "Windows 10, Windows 11, iOS 15+, Android 10+",
+    "applicationCategory": "NetworkingApplication",
+    "applicationSubCategory": "File Sharing Application",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "description": "DropLink is an ultra-fast, open-source, cross-platform local file transfer platform developed by Vikrant. It enables direct, private, high-speed peer-to-peer file transfers between iPhone, Android, and Windows without cloud servers or internet connection.",
+    "keywords": "DropLink, Vikrant, vikrant-project, airdrop for windows and android, cross platform airdrop, local file transfer, wifi direct transfer, high speed file sharing, p2p transfer, rust file transfer, swift ios airdrop alternative, android quick share alternative"
+  }
 -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "DropLink",
-  "alternateName": ["DropLink Pro", "DropLink File Transfer", "DropLink by Vikrant"],
-  "author": {
-    "@type": "Person",
-    "name": "Vikrant",
-    "url": "https://github.com/vikrant-project"
-  },
-  "creator": {
-    "@type": "Person",
-    "name": "Vikrant",
-    "url": "https://github.com/vikrant-project"
-  },
-  "operatingSystem": "Windows 10, Windows 11, iOS 15+, Android 10+",
-  "applicationCategory": "NetworkingApplication",
-  "applicationSubCategory": "File Sharing Application",
-  "offers": {
-    "@type": "Offer",
-    "price": "0.00",
-    "priceCurrency": "USD"
-  },
-  "description": "DropLink is an ultra-fast, open-source, cross-platform local file transfer platform developed by Vikrant. It enables direct, private, high-speed peer-to-peer file transfers between iPhone, Android, and Windows without cloud servers or internet connection.",
-  "keywords": "DropLink, Vikrant, vikrant-project, airdrop for windows and android, cross platform airdrop, local file transfer, wifi direct transfer, high speed file sharing, p2p transfer, rust file transfer, swift ios airdrop alternative, android quick share alternative"
-}
-</script>
 
 # ⚡ DropLink — The Universal Cross-Platform File Transfer Platform
 
