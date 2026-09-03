@@ -1,0 +1,55 @@
+name: Build iOS IPA
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show Xcode Version
+        run: xcodebuild -version
+
+      - name: Build with xcodebuild
+        run: |
+          xcodebuild clean build \
+            -project DropLink.xcodeproj \
+            -scheme DropLink \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination "generic/platform=iOS" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            BUILD_DIR=./build
+
+      - name: Package Authentic IPA
+        run: |
+          mkdir -p Payload
+          cp -r build/Release-iphoneos/DropLink.app Payload/
+          zip -r DropLink.ipa Payload
+          ls -lh DropLink.ipa
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DropLink-ipa
+          path: DropLink.ipa
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete v1.0.0 --yes || true
+          gh release create v1.0.0 DropLink.ipa \
+            --title "DropLink iOS Release v1.0.0" \
+            --notes "Production Native SwiftUI build for iOS (Sideload-ready via AltStore, Sideloadly, TrollStore)."

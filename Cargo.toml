@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "core",
+    "windows",
+    "installer",
+]
+resolver = "2"

@@ -1,0 +1,16 @@
+[package]
+name = "droplink-installer"
+version = "1.0.0"
+edition = "2021"
+authors = ["DropLink Contributors"]
+description = "Installer for DropLink Windows"
+
+[dependencies]
+winreg = "0.52"
+anyhow = "1.0"
+wry = "0.47"
+tao = "0.30"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+open = "5.3"
+parking_lot = "0.12"

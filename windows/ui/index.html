@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DropLink</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- Modern Windows Titlebar & Nav -->
+  <header class="titlebar" data-tauri-drag-region>
+    <div class="brand">
+      <div class="brand-icon-wrapper">
+        <svg class="brand-logo" viewBox="0 0 32 32" width="24" height="24" fill="none">
+          <defs>
+            <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#47BFFF"/>
+              <stop offset="100%" stop-color="#1A9FFF"/>
+            </linearGradient>
+            <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="2" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+          <circle cx="16" cy="16" r="14" stroke="url(#brandGrad)" stroke-width="2.5" filter="url(#logoGlow)"/>
+          <path d="M16 7L16 20M16 20L10.5 14.5M16 20L21.5 14.5" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="24.5" r="1.8" fill="#66C0F4"/>
+        </svg>
+      </div>
+      <span class="brand-name">DropLink</span>
+      <span class="version-tag">Pro v1.0</span>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-btn active" data-tab="tab-nearby">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <span>Nearby</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-history">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8z"/></svg>
+        <span>History</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-settings">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        <span>Settings</span>
+      </button>
+    </nav>
+
+    <!-- Local Device Status Indicator Pill -->
+    <div class="device-status-pill" id="btn-status-qr" title="Click to view QR pairing info">
+      <span class="status-pulse-dot"></span>
+      <span id="local-device-name">SOUL (PC) • 192.168.1.5</span>
+    </div>
+  </header>
+
+  <!-- Main Application Content Container -->
+  <main class="app-content">
+    
+    <!-- TAB 1: NEARBY DEVICES -->
+    <section id="tab-nearby" class="tab-pane active">
+      
+      <!-- Top Action Hero Section -->
+      <div class="hero-transfer-box">
+        <div class="hero-text">
+          <h2>Drop to send. Anywhere nearby.</h2>
+          <p class="hero-desc">Direct high-speed local Wi-Fi transfer between Windows, iPhone, and Android.</p>
+        </div>
+
+        <div class="hero-actions">
+          <button id="btn-select-files" class="btn btn-hero btn-primary">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            Files
+          </button>
+          <button id="btn-select-folder" class="btn btn-hero btn-secondary">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            Folder
+          </button>
+          <button id="btn-open-direct-ip" class="btn btn-hero btn-glass">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Connect IP
+          </button>
+          <button id="btn-show-qr" class="btn btn-hero btn-glass">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            QR Code
+          </button>
+        </div>
+      </div>
+
+      <!-- Drag & Drop Staged Files Box -->
+      <div id="staged-files-box" class="staged-box hidden">
+        <div class="staged-header">
+          <div class="staged-title-group">
+            <span class="staged-icon">📦</span>
+            <span class="staged-title">Ready to Send: <strong id="staged-count">0 files</strong> (<span id="staged-size">0 MB</span>)</span>
+          </div>
+          <button id="btn-clear-staged" class="btn-clear">Clear All</button>
+        </div>
+        <div id="staged-list" class="staged-items-scroll"></div>
+        <div class="staged-prompt">Select any discovered device below to start transferring immediately.</div>
+      </div>
+
+      <!-- Discovery Section -->
+      <div class="discovery-section">
+        <div class="peers-header">
+          <div class="peers-title-group">
+            <h3>Available Devices</h3>
+            <span class="badge-count" id="peers-count">0</span>
+          </div>
+          <div class="scanning-badge">
+            <span class="scan-beacon-dot"></span>
+            <span>Scanning Wi-Fi & Bonjour</span>
+          </div>
+        </div>
+
+        <!-- Radar Viewport -->
+        <div class="radar-viewport">
+          <div class="sonar-dish" id="sonar-dish">
+            <div class="sonar-ring r1"></div>
+            <div class="sonar-ring r2"></div>
+            <div class="sonar-ring r3"></div>
+            <div class="sonar-sweep"></div>
+            <div class="sonar-center" title="This PC">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#47BFFF"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+            </div>
+            <!-- Floating peer nodes inside radar -->
+            <div id="radar-peers-container" class="radar-peers-container"></div>
+          </div>
+          <div id="radar-empty-text" class="radar-empty-desc">
+            <p class="radar-empty-label">Searching for nearby DropLink devices...</p>
+            <p class="radar-empty-sub">Open DropLink on your iPhone or click <strong>Connect IP</strong> above.</p>
+          </div>
+        </div>
+
+        <!-- Discovered Peer Cards Container -->
+        <div id="peers-grid" class="peers-grid">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: TRANSFER HISTORY -->
+    <section id="tab-history" class="tab-pane">
+      <div class="pane-header">
+        <div>
+          <h2>Transfer History</h2>
+          <p class="pane-sub">Log of all files sent and received on this machine.</p>
+        </div>
+        <button id="btn-clear-history" class="btn btn-secondary">Clear History</button>
+      </div>
+
+      <div class="table-container">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Direction</th>
+              <th>Files</th>
+              <th>Peer</th>
+              <th>Size</th>
+              <th>Time</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody">
+            <!-- Populated dynamically by app.js -->
+          </tbody>
+        </table>
+        <div id="history-empty" class="empty-placeholder">
+          <div class="empty-icon">📁</div>
+          <p>No transfers recorded yet</p>
+          <span>Files transferred to or from this PC will appear here.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: SETTINGS -->
+    <section id="tab-settings" class="tab-pane">
+      <div class="pane-header">
+        <div>
+          <h2>Settings</h2>
+          <p class="pane-sub">Manage network discovery and download preferences.</p>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <div class="setting-card">
+          <div class="setting-info">
+            <h4>Device Name</h4>
+            <p>How this computer appears to iPhones and Androids nearby.</p>
+          </div>
+          <input type="text" id="setting-device-name" class="input-modern" value="This PC">
+        </div>
+
+        <div class="setting-card">
+          <div class="setting-info">
+            <h4>Download Folder</h4>
+            <p>Where incoming files from phone will be stored automatically.</p>
+          </div>
+          <div class="setting-row">
+            <input type="text" id="setting-download-dir" class="input-modern" readonly>
+            <button id="btn-change-download-dir" class="btn btn-secondary">Browse</button>
+          </div>
+        </div>
+
+        <div class="setting-card">
+          <div class="setting-info">
+            <h4>Auto-Accept From Trusted Devices</h4>
+            <p>Automatically receive files from devices you've previously approved.</p>
+          </div>
+          <label class="switch-toggle">
+            <input type="checkbox" id="setting-auto-accept">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-card">
+          <div class="setting-info">
+            <h4>Run at Windows Startup</h4>
+            <p>Keep DropLink active in system tray for background local drops.</p>
+          </div>
+          <label class="switch-toggle">
+            <input type="checkbox" id="setting-autostart">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating Active Transfer Player (Spotify-Style Bottom Bar) -->
+  <aside id="transfer-modal" class="transfer-player-bar hidden">
+    <div class="player-left">
+      <div class="file-icon-glow">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#66C0F4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div class="player-meta">
+        <div class="player-filename" id="transfer-file-name">Transferring...</div>
+        <div class="player-submeta" id="transfer-meta-text">0 B / 0 B • 0.0 MB/s</div>
+      </div>
+    </div>
+
+    <div class="player-center">
+      <div class="player-progress-track">
+        <div class="player-progress-fill" id="transfer-progress-bar"></div>
+      </div>
+      <div class="player-eta" id="transfer-eta-text">Streaming...</div>
+    </div>
+
+    <div class="player-actions">
+      <button id="btn-transfer-pause" class="btn-player-action" title="Pause / Resume">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+      <button id="btn-transfer-stop" class="btn-player-action btn-danger" title="Cancel Transfer">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Incoming Transfer Authorization Modal -->
+  <div id="incoming-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="incoming-icon-ring">
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#66C0F4" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </div>
+      <h3 class="incoming-title">Incoming Transfer Request</h3>
+      <p class="incoming-subtitle"><strong id="incoming-sender-name">Nearby Device</strong> wants to send you:</p>
+      
+      <div class="incoming-details" id="incoming-summary">
+        1 file • 0 MB
+      </div>
+
+      <div class="sas-pin-verification">
+        <span class="sas-label">Security PIN (Matches sender screen):</span>
+        <div class="sas-pin-code" id="incoming-sas-pin">000 000</div>
+      </div>
+
+      <label class="trust-device-row">
+        <input type="checkbox" id="trust-sender-checkbox">
+        <span>Always allow transfers from this device (Auto-Accept)</span>
+      </label>
+
+      <div class="incoming-actions">
+        <button id="btn-incoming-decline" class="btn btn-secondary">Decline</button>
+        <button id="btn-incoming-accept" class="btn btn-primary">Accept Transfer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direct IP Connect Modal -->
+  <div id="direct-ip-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Connect Device via IP</h3>
+        <button id="btn-close-direct-ip" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 20px;">
+        <p style="color: #94a3b8; font-size: 13px; margin-bottom: 14px;">Enter the Wi-Fi IP address shown in DropLink on your iPhone or Android:</p>
+        <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+          <input type="text" id="direct-ip-input" placeholder="e.g. 192.168.1.4" style="flex: 1; padding: 10px 14px; background: #070A10; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-family: monospace; font-size: 14px; outline: none;">
+          <button id="btn-submit-direct-ip" class="btn btn-primary" style="padding: 10px 20px;">Connect</button>
+        </div>
+        <p id="direct-ip-status" style="font-size: 12px; color: #66C0F4;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- High-Contrast QR Code Pairing Modal -->
+  <div id="qr-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Direct Wi-Fi Pairing</h3>
+        <button id="btn-close-qr" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="qr-instructions">Scan this QR code with the DropLink app on your iPhone or Android to pair instantly:</p>
+        
+        <div class="qr-canvas-container">
+          <canvas id="qr-canvas"></canvas>
+        </div>
+
+        <div class="qr-ip-badge">
+          <span>Direct Wi-Fi IP:</span>
+          <strong id="qr-ip-display">192.168.1.5:52520</strong>
+          <button id="btn-copy-ip" class="btn-copy">Copy</button>
+        </div>
+        <div class="qr-code-raw" id="qr-connection-string"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="qrcode.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

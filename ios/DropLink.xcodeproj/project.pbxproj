@@ -1,0 +1,247 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A000001 /* DropLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000011 /* DropLinkApp.swift */; };
+		1A000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000012 /* ContentView.swift */; };
+		1A000003 /* ProtocolModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000013 /* ProtocolModels.swift */; };
+		1A000004 /* DropLinkCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000014 /* DropLinkCrypto.swift */; };
+		1A000005 /* BonjourDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000015 /* BonjourDiscovery.swift */; };
+		1A000006 /* TransferSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000016 /* TransferSession.swift */; };
+		1A000007 /* RadarPulseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000017 /* RadarPulseView.swift */; };
+		1A000008 /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00001A /* QRCodeScannerView.swift */; };
+		1A000009 /* TransferReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00001B /* TransferReceiver.swift */; };
+		1A00000A /* BackgroundTransferKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00001C /* BackgroundTransferKeeper.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A000010 /* DropLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A000011 /* DropLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropLinkApp.swift; sourceTree = "<group>"; };
+		1A000012 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1A000013 /* ProtocolModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolModels.swift; sourceTree = "<group>"; };
+		1A000014 /* DropLinkCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropLinkCrypto.swift; sourceTree = "<group>"; };
+		1A000015 /* BonjourDiscovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonjourDiscovery.swift; sourceTree = "<group>"; };
+		1A000016 /* TransferSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferSession.swift; sourceTree = "<group>"; };
+		1A000017 /* RadarPulseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarPulseView.swift; sourceTree = "<group>"; };
+		1A000018 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A000019 /* DropLink.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DropLink.entitlements; sourceTree = "<group>"; };
+		1A00001A /* QRCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerView.swift; sourceTree = "<group>"; };
+		1A00001B /* TransferReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferReceiver.swift; sourceTree = "<group>"; };
+		1A00001C /* BackgroundTransferKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTransferKeeper.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A000020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A000030 = {
+			isa = PBXGroup;
+			children = (
+				1A000031 /* DropLink */,
+				1A000032 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A000031 /* DropLink */ = {
+			isa = PBXGroup;
+			children = (
+				1A000011 /* DropLinkApp.swift */,
+				1A000012 /* ContentView.swift */,
+				1A000013 /* ProtocolModels.swift */,
+				1A000014 /* DropLinkCrypto.swift */,
+				1A000015 /* BonjourDiscovery.swift */,
+				1A000016 /* TransferSession.swift */,
+				1A000017 /* RadarPulseView.swift */,
+				1A000018 /* Info.plist */,
+				1A000019 /* DropLink.entitlements */,
+				1A00001A /* QRCodeScannerView.swift */,
+				1A00001B /* TransferReceiver.swift */,
+				1A00001C /* BackgroundTransferKeeper.swift */,
+			);
+			path = DropLink;
+			sourceTree = "<group>";
+		};
+		1A000032 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A000010 /* DropLink.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A000040 /* DropLink */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A000050 /* Build configuration list for PBXNativeTarget "DropLink" */;
+			buildPhases = (
+				1A000060 /* Sources */,
+				1A000020 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DropLink;
+			productName = DropLink;
+			productReference = 1A000010 /* DropLink.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A000070 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 1A000080 /* Build configuration list for PBXProject "DropLink" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A000030;
+			productRefGroup = 1A000032 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A000040 /* DropLink */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A000060 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A000001 /* DropLinkApp.swift in Sources */,
+				1A000002 /* ContentView.swift in Sources */,
+				1A000003 /* ProtocolModels.swift in Sources */,
+				1A000004 /* DropLinkCrypto.swift in Sources */,
+				1A000005 /* BonjourDiscovery.swift in Sources */,
+				1A000006 /* TransferSession.swift in Sources */,
+				1A000007 /* RadarPulseView.swift in Sources */,
+				1A000008 /* QRCodeScannerView.swift in Sources */,
+				1A000009 /* TransferReceiver.swift in Sources */,
+				1A00000A /* BackgroundTransferKeeper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1A000091 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_TESTABILITY = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.droplink.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1A000092 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.droplink.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1A000093 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = DropLink/Info.plist;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.droplink.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1A000094 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = DropLink/Info.plist;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.droplink.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A000080 /* Build configuration list for PBXProject "DropLink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A000091 /* Debug */,
+				1A000092 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A000050 /* Build configuration list for PBXNativeTarget "DropLink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A000093 /* Debug */,
+				1A000094 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 1A000070 /* Project object */;
+}

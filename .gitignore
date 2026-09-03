@@ -1,0 +1,40 @@
+# Build outputs & caches
+target/
+**/target/
+build/
+**/build/
+.gradle/
+**/.gradle/
+*.class
+*.apk
+*.aab
+*.ipa
+*.app
+*.dSYM
+*.o
+*.obj
+*.exe
+*.dll
+*.pdb
+*.suo
+*.user
+*.WebView2/
+**/*.WebView2/
+
+# OS / IDE metadata
+.DS_Store
+Thumbs.db
+.idea/
+**/.idea/
+*.iml
+.vscode/
+**/.vscode/
+*.swp
+*~
+
+# Temporary & logs
+*.log
+*.tmp
+*.bak
+dist/
+node_modules/

@@ -1,0 +1,27 @@
+[package]
+name = "droplink-windows"
+version = "1.0.0"
+edition = "2021"
+authors = ["DropLink Contributors"]
+description = "DropLink Cross-Platform Local File Transfer for Windows"
+default-run = "droplink-windows"
+
+[dependencies]
+droplink-core = { path = "../core" }
+tokio = { version = "1.43", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+rfd = "0.15"
+wry = "0.47"
+tao = "0.30"
+uuid = { version = "1.11", features = ["v4"] }
+chrono = "0.4"
+open = "5.3"
+winreg = "0.52"
+parking_lot = "0.12"
+
+[build-dependencies]
+winres = "0.1"
